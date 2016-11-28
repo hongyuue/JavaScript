@@ -1,0 +1,19 @@
+.pictures {
+	margin:0 auto;
+	border: 2px solid #808080;
+	width: 700px;
+	height: 290px;
+}
+
+img {
+	border: 1px solid #808080;
+	margin: 1px;
+	position: relative;
+	top :10px;
+	left: 3px;
+	opacity:0.4;
+}
+
+img:hover {
+	opacity:1;
+}

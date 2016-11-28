@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="dist/jquery.validate.js"></script>
+		input:focus, textarea:focus {
+			border: 1px solid #f00;
+			background: #fcc;
+		}
+	</style>
+</head>
+<body>
+	<form action="#" method="POST" id="regForm">
+		<fieldset>
+			<legend>个人基本信息</legend>
+			<div>
+				<label for="username">名称：</label>
+				<input type="text" name="" id="username">
+
+			</div>
+			<div>
+				<label for="pass">密码：</label>
+				<input type="password" name="" id="pass">
+			</div>
+			<div>
+				<label for="msg">详细信息：</label>
+				<textarea id="msg"></textarea>
+
+			</div>
+			<form>
+				<div class="msg">
+					<div class="msg_caption">
+						<span class="bigger">放大</span>
+						<span class="smaller">缩小</span>
+					</div>
+					<div>
+						<textarea id="comment" rows="8" cols="20"></textarea>
+					</div>
+				</div>
+			</form>
+		</fieldset>
+	</form>
+	<form method="post" action="">
+	   你爱好的运动是？
+	   <br/>
+	    <input type="checkbox" name="items" value="足球"/>足球
+		<input type="checkbox" name="items" value="篮球"/>篮球
+		<input type="checkbox" name="items" value="羽毛球"/>羽毛球
+		<input type="checkbox" name="items" value="乒乓球"/>乒乓球
+	   <br/>
+	    <input type="checkbox" id="CheckedAll" >全选/全不选<br>
+	   
+
+		<input type="button" id="send" value="提　交"/> 
+	</form>
+
+
+
+	<div class="centent" style="display:inline">
+		<select multiple id="select1" style="width: 100px; height:160px">
+			<option value="1">选项1</option>
+			<option value="2">选项2</option>
+			<option value="3">选项3</option>
+			<option value="4">选项4</option>
+			<option value="5">选项5</option>
+			<option value="6">选项6</option>
+			<option value="7">选项7</option>
+			<option value="8">选项8</option>
+		</select>
+			<div>
+				<span id="add">选中添加到右边&gt;&gt;</span>
+				<span id="add_all">全部添加到右边&gt;&gt;</span>
+			</div>
+	</div>
+		
+	<div class="centent" style="display:inline">
+			<select multiple id="select2" style="width: 100px; height:160px;"></select>
+	
+		<div>
+			<span id="remove">&lt;&lt;选中删除到左边</span>
+			<span id="remove_all">&lt;&lt;全部删除到左边</span>
+		</div>
+	</div>
+	
+	<form method="POST" action="" id="validate">
+		<div class="int">
+			<label for="username">用户名:</label>
+			<input type="text" id="username" name="username" size="25">
+
+		</div>
+		<div class="int">
+			<label for="email">邮箱    :</label>
+			<input type="text" name="" id="email" class="required">
+		</div>
+		<div class="int">
+			<label for="personinfo">个人资料:</label>
+			<input type="text" name="" id="personinfo">			
+		</div>
+		<div class="sub">
+			<input type="submit" value="提交" id="send">
+			<input type="reset" id="res" name="">
+
+		</div>
+
+	</form>
+
+
+	<script type="text/javascript">
+		$(function(){
+
+			$("#CheckedAll").click(function(){
+			
+					$('[name=items]:checkbox').attr("checked",this.checked);	
+				
+			});
+
+			$("#CheckedNo").click(function(){
+				$('[name=items]:checkbox').attr("checked",false);
+			});
+
+			$("#CheckedRev").click(function(){
+				$("[name=items]:checkbox").each(function(){
+					this.checked = !this.checked;
+				});
+			});
+
+
+			$("[name = items]:checkbox").click(function(){
+				var flag = true;
+				$("[name = items]:checkbox").each(function(){
+					if(!this.checked){
+						flag = false;
+					}
+				});
+				$("#CheckedAll").attr("checked",flag);
+				
+			});
+
+
+			$("#send").click(function(){
+				var str = '';
+				$('[name=items]:checkbox:checked').each(function(){
+					str += $(this).val()+'\r\n';
+				});
+				alert(str);
+			});
+			});
+		
+			$("#add").click(function(){
+				var $options = $("#select1 option:selected");
+				// var $remove = $options.remove();
+				$options.appendTo("#select2");
+			});		
+
+			$("#add_all").click(function(){
+				var $options = $("#select1 option");
+				$options.appendTo("#select2");
+			});
+
+			$("#select1").dblclick(function(){
+				var $options = $("option:selected",this);
+				$options.appendTo("#select2");
+			});
+
+			$("form: input.required").each(function(){
+				var $required = $("<strong class='high'> *</strong>");
+				$(this).parent().append($required);
+			});
+			// $("form :input").blur(function(){
+			// 	var $parent = $(this).parent();
+			// 	$parent.find(".fromtips").remove();
+			// 	if($(this).is("#username")) {
+			// 		if( this.value == "" || this.value.length < 6){
+			// 			var errorMsg = "请输入至少6位用户名.";
+			// 			$parent.append("<span class='fromtips onError'>" + errorMsg+"</span>");
+			// 		} else {
+			// 			var okMsg = "输入正确";
+			// 			$parent.append("<span class = 'fromtips onSuccess'> " + okMsg + "</span>");
+			// 			// $parent.css("background","green");
+			// 		}
+
+			// 		if($(this).is("#email")) {
+			// 			if(this.value == "" || (this.value!="" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value)) ){
+			// 				var errorMsg = "请输入正确的email地址";
+			// 				$parent.append("<span class='fromtips onError'>" + errorMsg + "</span>");
+			// 			} else {
+			// 				var okMsg = "输入正确";
+			// 				$parent.append("<span class='fromtips onSuccess'>" + okMsg + "</span>");
+			// 			}
+			// 		} 
+
+					$("#send").click(function(){
+						$("form.required:input").trigger("blur");
+						var numError = $("form .onError").length;
+						if(numError){
+							return false;
+						}
+						alert("注册成功");
+					});
+
+				} 
+
+				
+			});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#inner {
+			background-color: #ccc;
+			width:  400px;
+			height: 200px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			overflow:hidden
+		}
+
+		#outer {
+			position:  relative;
+			height: 600px;
+			width:  800px;
+			border: 1px solid black;
+
+		}
+		#left {
+			width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #FC0;
+            position: absolute;
+            top:-50px;
+	    	left: -50px;
+		}
+		#right {
+			width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #FC0;
+            position: absolute;
+            bottom: -50px;
+	    	right: -50px;
+		}
+		#test {
+			position: absolute;
+
+			background-color: green;
+			height: 100px;
+			width: 100px;
+
+		}
+	</style>
+
+</head>
+<body>
+	<div id="outer">
+
+		<div id="inner">
+		<div id="left">
+
+		</div>
+
+		<div id="right">
+		</div>
+		</div>
+	</div>
+	<div id="test">
+	</div>
+	
+</body>
+</html>

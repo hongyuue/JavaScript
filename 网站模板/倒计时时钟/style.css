@@ -1,0 +1,48 @@
+table {
+	display: inline-block;
+	background-color: white;
+	color: black;
+	border :inset
+}
+span {
+	position: relative;
+	font-family: "经典黑体简";
+	top :-7px;
+}
+
+body {
+	font-family: "经典等线简";
+	color:  white;
+}
+
+
+.clock {
+	width: 300px;
+	height: 140px;
+	background-color: black;
+	border-radius: 15px;
+	margin: 0 auto;
+}
+
+#contrl {
+	
+
+}
+button {
+	background: #39D859;
+	width: 270px;
+	height: 40px;
+	position: relative;
+	top:  50px;
+	border-radius: 5px;
+	left: 20px;
+}
+
+#time {
+	position: relative;
+	top:  30px;
+	left: 80px;
+	
+	
+
+}

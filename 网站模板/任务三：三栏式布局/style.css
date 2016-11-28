@@ -1,0 +1,39 @@
+#background {
+	background-color: gray;
+	overflow: auto;
+}
+
+div {
+	border: 1px solid #999;
+	padding: 20px;
+}
+img {
+	height: 80px;
+	width: 80px;
+}
+
+#teamname {
+	width: 200px;
+	float: left;
+}
+
+#teamname  h3{
+	position: relative;
+	left: 90px;
+	top: -90px;
+}
+#intro {
+	margin: 0  200px 0 270px;
+}
+
+#personlogo {
+	width: 120px;
+	float: right;
+}
+
+#personlogo img {
+
+	border: 1px solid #999;
+	margin: 0.5em 20px;
+}
+

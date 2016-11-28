@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="scripts/jquery.js"></script>
+
+	<meta charset="utf-8">
+</head>
+<body>
+	
+	<form id="form1" action="#">
+		<p>评论:</p>
+		<p>姓名:<input type="text" name="username" id="username"></p>
+		<p>内容:<textarea name="content" id="content" rows="2" cols="20"></textarea></p>
+		<p><input type="button" name="" id="send" value="提交"></p>
+	</form>
+	
+	<div class="comment">已有评论:</div>	
+	<div id="resText"></div>
+	<script type="text/javascript">
+		$(function(){
+			$.getScript("http://dev.jquery.com/view/trunk/plugins/color/jquery.color.js",function(){
+					$("#go").click(function(){
+						$(".block").animate({ background-color: "pink"},1000)
+									.animate({background-color: "blue"},1000);
+					});
+			});
+		});
+	</script>
+</body>
+</html>

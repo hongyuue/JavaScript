@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            $("a[href='ShowCheck.aspx']").parent().addClass('active');
+        });
+        var token = 'hongyue';
+        function allowit(pid) {
+//            if (confirm('确定通过？')) {
+//                
+            //            }
+            $.ajax({
+                type: "GET",
+                url: "Ashx/DeletePhotos.ashx",
+                data: { token: token, pID: pid, action: 'recover' },
+                dataType: "text",
+                success: function (data) {
+                    if (data === "true") {
+                        //删除节点
+                        $('#allow' + pid).text("已通过");
+                        $('#allow' + pid).attr("disabled", "disabled");
+                    } else if (data === "服务器异常") {
+                        alert('服务器异常');
+                    } else if (data == "false") {
+                        $('#allow' + pid).text("已通过");
+                        $('#allow' + pid).attr("disabled", "disabled");
+                        alert("慢了一步，照片已经被其他人员审核了");
+                    }
+                }
+            });
+        }
+
+
+        function CheckType(pid, type) {
+//            if (confirm('确定通过并加入此分类？')) {
+//                
+//            }
+            $.ajax({
+                type: "GET",
+                url: "Ashx/CheckType.ashx",
+                data: { pID: pid, pType: type, token: token },
+                dataType: "text",
+                success: function (data) {
+                    if (data) {
+                        if (data == "True") {
+                            $('#type' + type + pid).text("已归类" + $('#type' + type + pid).text());
+                            $('#type' + type + pid).attr("disabled", "disabled")
+                        }
+                        else {
+                            
+                        }
+                    } else {
+                        $('#type' + type + pid).text("已通过");
+                        $('#type' + type + pid).attr("disabled", "disabled");
+                        alert("慢了一步，照片已经被其他人员审核了");
+                    }
+                }
+            });
+        }
+
+        function deletePhoto(pid) {
+//            if (confirm('确定删除照片？')) {
+//               
+            //            }
+            $.ajax({
+                type: "GET",
+                url: "Ashx/DeletePhotos.ashx",
+                data: { pID: pid, token: token },
+                dataType: "text",
+                success: function (data) {
+                    if (data === "true") {
+                        //删除节点
+                        $('#' + pid).text("已删除");
+                        $('#' + pid).attr("disabled", "disabled")
+                    } else if (data === "服务器异常") {
+                        alert('服务器异常');
+                    }
+                }
+            });
+        }
+
+        function refreshData() {
+            document.location.reload();
+        }
+
+        //获取url参数值
+        function getTokenbyUrl(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+
+</body>
+</html>
