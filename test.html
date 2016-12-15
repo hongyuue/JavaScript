@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style type="text/css">
+            button {
+                width: 33px;
+                height: 33px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="todoText">
+            <input type="text" id="id-input-todo">
+            <button type="button" id="id-input-add">添加</button>
+        </div>
+        <div class="todoList">
+            <button type="button"id="id-input-done">完成</button>
+            <button type="button"id="id-input-delete">删除</button>
+        </div>
+        <script type="text/javascript">
+            var e = function(selector) {
+                return document.querySelector(selector)
+            }
+            var btn = e('#button1')
+            btn.addEventListener('click', function(event){
+                var target = event.target
+                target.innerHTML = 123
+            })
+        </script>
+    </body>
+</html>
